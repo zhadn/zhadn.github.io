@@ -1,44 +1,10 @@
 <playlist xmlns="https://xspf.org/ns/0/" version="1">
   <trackList>
     <track>
-      <creator>8-Bit Armies</creator>
-      <title>Blockhead</title>
-      <location>https://www.vipvgm.net/mu/8bitarmies-blockhead.m4a</location>
-    </track>
-    <track>
-      <creator>8-Bit Armies</creator>
-      <title>Check My Creds</title>
-      <location>https://www.vipvgm.net/mu/8bitarmies-checkmycreds.m4a</location>
-    </track>
-    <track>
-      <creator>8-Bit Armies</creator>
-      <title>Oh Snap</title>
-      <location>https://www.vipvgm.net/mu/8bitarmies-ohsnap.m4a</location>
-    </track>
-    <track>
-      <creator>8-Bit Hordes</creator>
-      <title>Retro Hero</title>
-      <location>https://www.vipvgm.net/mu/8bithordes-retrohero.m4a</location>
-    </track>
-    <track>
-      <creator>8-Bit Hordes</creator>
-      <title>Frank Klepacki - Horde March (Trailer Version)</title>
-      <location>https://www.vipvgm.net/mu/8bithordes-frankklepacki-hordemarch(trailerver).m4a</location>
-    </track>
-    <track>
-      <creator>99 Spirits</creator>
-      <title>Crushing Evil and Spreading the Truth</title>
-      <location>https://www.vipvgm.net/mu/99spirits-crushingevil&spreadingthetruth.m4a</location>
-    </track>
-    <track>
-      <creator>99 Spirits</creator>
-      <title>Crushing Evil, Absolute</title>
-      <location>https://www.vipvgm.net/mu/99spirits-crushingevilabsolute.m4a</location>
-    </track>
-    <track>
-      <creator>99 Spirits</creator>
-      <title>Veteran Fighter</title>
-      <location>https://www.vipvgm.net/mu/99spirits-veteranfighter.m4a</location>
+      <creator>Final Fantasy XI</creator>
+      <title>The Pioneers</title>
+      <location>Music/final_fantasy_xi_ost_the_pioneers.mp3</location>
+      <credit>Zhadn></credit>
     </track>
   </trackList>
 </playlist>

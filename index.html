@@ -125,7 +125,7 @@
 		var trackelem = $('#tracks-table div').eq (trackid);
 		trackelem.addClass ('selected');
 
-		window.uri.hash = createTrackId (track);
+		window.location.hash = createTrackId (track);
 		$('audio').attr ('src', track.uri);
 		$('audio').trigger ('play');
 

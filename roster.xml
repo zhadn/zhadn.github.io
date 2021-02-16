@@ -1,9 +1,33 @@
 <playlist xmlns="https://xspf.org/ns/0/" version="1">
   <trackList>
     <track>
+      <creator>F-Zero</creator>
+      <title>Fire Field</title>
+      <location>Music/f-zero-fire-field.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
+      <creator>Final Fantasy VI</creator>
+      <title>From that Day On...</title>
+      <location>Music/final-fantasy-vi-from-that-day-on....mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
+      <creator>Final Fantasy X</creator>
+      <title>Sprouting</title>
+      <location>Music/final-fantasy-x-sprouting.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
       <creator>Final Fantasy XI</creator>
       <title>The Pioneers</title>
       <location>Music/final-fantasy-xi-the-pioneers.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
+      <creator>Fire Emblem: Three Houses</creator>
+      <title>The Apex of the World (Rain)</title>
+      <location>Music/fire-emblem-three-houses-the-apex-of-the-world-(rain)</location>
       <credit>Zhadn></credit>
     </track>
     <track>
@@ -17,6 +41,30 @@
       <title>Training Theme</title>
       <location>Music/luigi's-mansion-training-theme.mp3</location>
       <credit>MoeLoogham></credit>
+    </track>
+    <track>
+      <creator>Minecraft</creator>
+      <title>Mice On Venus</title>
+      <location>Music/minecraft-mice-on-venus.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
+      <creator>Phoenix Wright: Ace Attorney</creator>
+      <title>Dick Gumshoe ~ Detective Gumshoe, Pal</title>
+      <location>Music/phoenix-wright-ace-attorney-dick-gumshoe-detective-gumshoe-pal.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
+      <creator>TowerFall</creator>
+      <title>Darkfang</title>
+      <location>Music/towerfall-darkfang.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
+      <creator>Xenoblade Chronicles X</creator>
+      <title>N木ig木ht木L</title>
+      <location>Music/xenoblade-chronicles-x-n木ig木ht木l.mp3</location>
+      <credit>Zhadn></credit>
     </track>
   </trackList>
 </playlist>

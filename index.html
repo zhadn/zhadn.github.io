@@ -37,10 +37,10 @@
 		return minutes + ":" + seconds;
 	}
 
-	// Creates an id for a track used in the location hash
+	// Creates an id for a track used in the uri hash
 	function createTrackId (track) {
 		var playlist = $('#select-playlist').val ();
-		var track = track.creator + ' - ' + track.title;
+		var track = track.game + ' - ' + track.title;
 		track = track.replace(/[^a-zA-Z0-9-]/g, '_');
 
 		return encodeURIComponent (playlist) + ':' + track;
@@ -74,9 +74,9 @@
 
 		$(playlistXML).find ('playlist trackList > track').each (function () {
 			track = {
-				creator: $(this).find ('creator').text (),
+				game: $(this).find ('game').text (),
 				title: $(this).find ('title').text (),
-				location: $(this).find ('location').text ()
+				uri: $(this).find ('uri').text ()
 			};
 
 			result.push (track);
@@ -125,8 +125,8 @@
 		var trackelem = $('#tracks-table div').eq (trackid);
 		trackelem.addClass ('selected');
 
-		window.location.hash = createTrackId (track);
-		$('audio').attr ('src', track.location);
+		window.uri.hash = createTrackId (track);
+		$('audio').attr ('src', track.uri);
 		$('audio').trigger ('play');
 
 		$('html, body').stop ().animate ({
@@ -158,7 +158,7 @@
 					var track = g_playlist[i];
 
 					var row = $('<div>');
-					row.text (track.creator + ' - ' + track.title);
+					row.text (track.game + ' - ' + track.title);
 					row.attr ('id', createTrackId (track));
 
 					row.appendTo ('#tracks-table');
@@ -330,7 +330,7 @@
 		}
 
 		// If hash is set, override playlist and track
-		var url_track = parseTrackId (window.location.hash.substr (1));
+		var url_track = parseTrackId (window.uri.hash.substr (1));
 
 		if (url_track !== null) {
 			playlist = url_track.playlist;

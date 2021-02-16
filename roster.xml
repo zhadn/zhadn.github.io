@@ -1,10 +1,16 @@
 <playlist xmlns="https://xspf.org/ns/0/" version="1">
   <trackList>
     <track>
-      <creator>Final Fantasy XI</creator>
+      <game>Final Fantasy XI</game>
       <title>The Pioneers</title>
-      <location>Music/final_fantasy_xi_ost_the_pioneers.mp3</location>
+      <uri>Music/final_fantasy_xi_the_pioneers.mp3</uri>
       <credit>Zhadn></credit>
+    </track>
+    <track>
+      <game>Luigi's Mansion</game>
+      <title>Training Theme</title>
+      <uri>Music/luigi's_mansion_training_theme.mp3</uri>
+      <credit>MoeLoogham></credit>
     </track>
   </trackList>
 </playlist>

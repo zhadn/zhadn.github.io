@@ -330,7 +330,7 @@
 		}
 
 		// If hash is set, override playlist and track
-		var url_track = parseTrackId (window.uri.hash.substr (1));
+		var url_track = parseTrackId (window.location.hash.substr (1));
 
 		if (url_track !== null) {
 			playlist = url_track.playlist;

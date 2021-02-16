@@ -18,7 +18,7 @@
 
 	var PLAYLISTS = {
 		'ZVGM': 'roster.xml',
-		'VIP': '//vip.aersia.net/roster.xml',
+		'VIP': '//vipvgm.net/roster.xml',
 	};
 
 	var DEFAULT_PLAYLIST = 'ZVGM';
@@ -41,7 +41,7 @@
 	// Creates an id for a track used in the uri hash
 	function createTrackId (track) {
 		var playlist = $('#select-playlist').val ();
-		var track = track.game + ' - ' + track.title;
+		var track = track.creator + ' - ' + track.title;
 		track = track.replace(/[^a-zA-Z0-9-]/g, '_');
 
 		return encodeURIComponent (playlist) + ':' + track;
@@ -75,9 +75,9 @@
 
 		$(playlistXML).find ('playlist trackList > track').each (function () {
 			track = {
-				game: $(this).find ('game').text (),
+				creator: $(this).find ('creator').text (),
 				title: $(this).find ('title').text (),
-				uri: $(this).find ('uri').text ()
+				location: $(this).find ('location').text ()
 			};
 
 			result.push (track);
@@ -127,7 +127,7 @@
 		trackelem.addClass ('selected');
 
 		window.location.hash = createTrackId (track);
-		$('audio').attr ('src', track.uri);
+		$('audio').attr ('src', track.location);
 		$('audio').trigger ('play');
 
 		$('html, body').stop ().animate ({
@@ -159,7 +159,7 @@
 					var track = g_playlist[i];
 
 					var row = $('<div>');
-					row.text (track.game + ' - ' + track.title);
+					row.text (track.creator + ' - ' + track.title);
 					row.attr ('id', createTrackId (track));
 
 					row.appendTo ('#tracks-table');

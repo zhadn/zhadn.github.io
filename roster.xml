@@ -37,6 +37,12 @@
       <credit>Christafaaa></credit>
     </track>
     <track>
+      <creator>Halo 2</creator>
+      <title>Peril</title>
+      <location>Music/halo_2_peril.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
       <creator>Luigi's Mansion</creator>
       <title>Training Theme</title>
       <location>Music/luigi's-mansion-training-theme.mp3</location>
@@ -44,7 +50,7 @@
     </track>
     <track>
       <creator>Minecraft</creator>
-      <title>Mice On Venus</title>
+      <title>Mice on Venus</title>
       <location>Music/minecraft-mice-on-venus.mp3</location>
       <credit>Zhadn></credit>
     </track>

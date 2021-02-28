@@ -1,6 +1,12 @@
 <playlist xmlns="https://xspf.org/ns/0/" version="1">
   <trackList>
     <track>
+      <creator>Donkey Kong Country x Super Smash Bros. Ultimate</creator>
+      <title>Gang-Plank Galleon</title>
+      <location>Music/super-smash-bros-ultimate-gang-plank-galleon.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
       <creator>F-Zero</creator>
       <title>Fire Field</title>
       <location>Music/f-zero-fire-field.mp3</location>
@@ -58,7 +64,13 @@
       <creator>Halo 2</creator>
       <title>Peril</title>
       <location>Music/halo-2-peril.mp3</location>
-      <credit>itmebirbboy></credit>
+      <credit>Itmebirbboy></credit>
+    </track>
+    <track>
+      <creator>Lufia II: Rise of the Sinistrals</creator>
+      <title>Final Battle</title>
+      <location>Music/lufia-ii-rise-of-the-sinistrals-final-battle.mp3</location>
+      <credit>Zhadn></credit>
     </track>
     <track>
       <creator>Luigi's Mansion</creator>

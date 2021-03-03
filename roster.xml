@@ -1,9 +1,9 @@
 <playlist xmlns="https://xspf.org/ns/0/" version="1">
   <trackList>
     <track>
-      <creator>Donkey Kong Country x Super Smash Bros. Ultimate</creator>
-      <title>Gang-Plank Galleon</title>
-      <location>Music/super-smash-bros-ultimate-gang-plank-galleon.mp3</location>
+      <creator>Donkey Kong Country</creator>
+      <title>Aquatic Ambience [Restored] - Jammin' Sam Miller</title>
+      <location>Music/donkey-kong-country-aquatic-ambience.mp3</location>
       <credit>Zhadn></credit>
     </track>
     <track>
@@ -118,6 +118,12 @@
       <creator>Super Mario World</creator>
       <title>Swimming [Restored] - michael02022</title>
       <location>Music/super-mario-world-swimming.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
+      <creator>Super Smash Bros. Ultimate</creator>
+      <title>Gang-Plank Galleon - Donkey Kong Country</title>
+      <location>Music/super-smash-bros-ultimate-gang-plank-galleon.mp3</location>
       <credit>Zhadn></credit>
     </track>
     <track>

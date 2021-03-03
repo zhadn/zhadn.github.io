@@ -1,6 +1,12 @@
 <playlist xmlns="https://xspf.org/ns/0/" version="1">
   <trackList>
     <track>
+      <creator>Chrono Trigger</creator>
+      <title>Peaceful Days</title>
+      <location>Music/chrono-trigger-peaceful-days.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
       <creator>Donkey Kong Country</creator>
       <title>Aquatic Ambience [Restored] - Jammin' Sam Miller</title>
       <location>Music/donkey-kong-country-aquatic-ambience.mp3</location>

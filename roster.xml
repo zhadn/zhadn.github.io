@@ -39,13 +39,19 @@
     <track>
       <creator>Final Fantasy XI: Rise of the Zilart</creator>
       <title>カザム / Kazham - The NaNaa Mihgo's: Stolen Hearts</title>
-      <location>Music/final-fantasy-xi-kazham.mp3</location>
+      <location>Music/final-fantasy-xi-rise-of-the-zilart-kazham.mp3</location>
       <credit>Zhadn></credit>
     </track>
     <track>
       <creator>Final Fantasy XI: Seekers of Adoulin</creator>
       <title>The Pioneers</title>
-      <location>Music/final-fantasy-xi-the-pioneers.mp3</location>
+      <location>Music/final-fantasy-xi-seekers-of-adoulin-the-pioneers.mp3.mp3</location>
+      <credit>Zhadn></credit>
+    </track>
+    <track>
+      <creator>Final Fantasy XIV: Heavensward</creator>
+      <title>Painted Foothills (Dravanian Forelands)</title>
+      <location>Music/final-fantasy-xiv-heavensward-painted-foothills.mp3</location>
       <credit>Zhadn></credit>
     </track>
     <track>
@@ -127,8 +133,8 @@
       <credit>Zhadn></credit>
     </track>
     <track>
-      <creator>Super Smash Bros. Ultimate</creator>
-      <title>Gang-Plank Galleon - Donkey Kong Country</title>
+      <creator>Super Smash Bros. Ultimate x Donkey Kong Country</creator>
+      <title>Gang-Plank Galleon</title>
       <location>Music/super-smash-bros-ultimate-gang-plank-galleon.mp3</location>
       <credit>Zhadn></credit>
     </track>

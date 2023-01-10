@@ -1,2 +1,2 @@
 # zhadn.github.io
-Zhadn's VGM playlist
+Welcome to Zhadn's VGM Playlist.

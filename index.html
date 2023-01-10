@@ -3,6 +3,111 @@
     <head>
     </head>
     <body>
-       Hello!
+      <div id="title">
+        <h1>Zhadn's VGM Playlist</h1>
+      </div>
+      <div id="audio-player-container">
+        <audio id="audio-player" controls autoplay preload="auto">
+          <source id="vgm-track" src="" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      <div id="audio-controls">
+        <button onclick="AUDIO_PLAYER.play()">Play</button>
+        <button onclick="AUDIO_PLAYER.pause()">Pause</button>
+        <button onclick="AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted">Mute</button>
+        <button onclick="changeVolume(0.1)">+</button>
+        <button onclick="changeVolume(-0.1)">-</button>
+      </div>
+      <div id="tracks">
+        <h2>Zhadn's VGM Tracks</h2>
+        <ul id="vgm-tracks">
+          <li data-path="music/deltarune-field-of-hopes-and-dreams.mp3" background-path="backgrounds/deltarune.jpeg" onClick="playVGMTrack(this)">Deltarune: Field of Hopes and Dreams</li>
+          <li data-path="music/donkey-kong-country-aquatic-ambience.mp3" background-path="backgrounds/donkey-kong-country.jpeg" onClick="playVGMTrack(this)">Donkey Kong Country: Aquatic Ambience</li>
+          <li data-path="music/final-fantasy-x-sprouting.mp3" background-path="backgrounds/final-fantasy-x.png" onClick="playVGMTrack(this)">Final Fantasy X: Sprouting</li>
+          <li data-path="music/fire-emblem-three-houses-the-apex-of-the-world-(rain).mp3" background-path="backgrounds/fire-emblem-three-houses.jpeg" onClick="playVGMTrack(this)">Fire Emblem: Three Houses: The Apex of the World (Rain)</li>
+          <li data-path="music/octopath-traveler-main-theme.mp3" background-path="backgrounds/octopath-traveler.jpeg" onClick="playVGMTrack(this)">Octopath Traveler: Main Theme</li>
+        </ul>
+      </div>
     </body>
+
+    <script>
+      var AUDIO_PLAYER = document.getElementById("audio-player");
+      var VGM_TRACK = document.getElementById("vgm-track");
+      const NOW_PLAYING = "playing";
+
+      AUDIO_PLAYER.volume = 0.3;
+
+      playVGMTrack(chooseRandomTrack());
+
+      AUDIO_PLAYER.onended = function() {
+        playVGMTrack(chooseRandomTrack());
+      };
+
+      function playVGMTrack(track){
+        let lastPlayedTrack = document.getElementsByClassName(NOW_PLAYING)[0];
+
+        if (lastPlayedTrack){
+          lastPlayedTrack.classList.remove(NOW_PLAYING);
+        }
+
+        track.classList.add(NOW_PLAYING);
+        VGM_TRACK.src = track.getAttribute("data-path");
+        AUDIO_PLAYER.load();
+
+        setGameBackgroundImage(track.getAttribute("background-path"));
+      }
+
+      function chooseRandomTrack() {
+        let vgmTracks = document.getElementById("vgm-tracks");
+        let listOfTracks = vgmTracks.getElementsByTagName('li');
+        let numberOfTracks = listOfTracks.length;
+
+        do {
+          var randomTrackID = Math.floor(Math.random() * numberOfTracks);
+        } while (listOfTracks[randomTrackID].classList.contains(NOW_PLAYING));
+
+        return listOfTracks[randomTrackID];
+      }
+
+      function setGameBackgroundImage(background) {
+        document.body.style.backgroundImage = "url('"+background+"')";
+      }
+
+      function changeVolume(increment){
+
+        // console.log("START: " + AUDIO_PLAYER.volume);
+        newIncrement = (AUDIO_PLAYER.volume + increment).toFixed(2);
+
+        if (newIncrement >= 0 && newIncrement <= 1){
+          AUDIO_PLAYER.volume = newIncrement;
+          // console.log("END: " + AUDIO_PLAYER.volume);
+        }
+      }
+    </script>
+
+    <style>
+
+    .playing {
+      font-weight: bold;
+    }
+
+    #audio-player-container, #title {
+      text-align: center;
+    }
+
+    #title h1 {
+      color: #FFFFFF;
+    }
+
+    #audio-controls {
+      text-align: center;
+    }
+
+    #tracks {
+      background-color: #FFFFFF;
+      opacity: 0.75;
+    }
+
+    </style>
 </html>

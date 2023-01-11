@@ -29,21 +29,45 @@
 		<div id="tracks">
 			<h2>Zhadn's VGM Tracks</h2>
 			<ul id="vgm-tracks">
+				<li data-path="music/chrono-cross-dream-of-the-shore-near-another-world.mp3"
+				background-path="backgrounds/chrono-cross.jpeg"
+				onClick="playVGMTrack(this)">Chrono Cross - Dream of the Shore Near Another World</li>
+				
 				<li data-path="music/deltarune-field-of-hopes-and-dreams.mp3"
 				background-path="backgrounds/deltarune.jpeg"
-				onClick="playVGMTrack(this)">Deltarune: Field of Hopes and Dreams</li>
+				onClick="playVGMTrack(this)">Deltarune - Field of Hopes and Dreams</li>
+				
 				<li data-path="music/donkey-kong-country-aquatic-ambience.mp3"
 				background-path="backgrounds/donkey-kong-country.jpeg"
-				onClick="playVGMTrack(this)">Donkey Kong Country: Aquatic Ambience</li>
+				onClick="playVGMTrack(this)">Donkey Kong Country - Aquatic Ambience</li>
+				
 				<li data-path="music/final-fantasy-x-sprouting.mp3"
 				background-path="backgrounds/final-fantasy-x.png"
-				onClick="playVGMTrack(this)">Final Fantasy X: Sprouting</li>
+				onClick="playVGMTrack(this)">Final Fantasy X - Sprouting</li>
+				
 				<li data-path="music/fire-emblem-three-houses-the-apex-of-the-world-(rain).mp3"
 				background-path="backgrounds/fire-emblem-three-houses.jpeg"
-				onClick="playVGMTrack(this)">Fire Emblem: Three Houses: The Apex of the World (Rain)</li>
+				onClick="playVGMTrack(this)">Fire Emblem: Three Houses - The Apex of the World (Rain)</li>
+				
+				<li data-path="music/kingdom-hearts-hollow-bastion.mp3"
+				background-path="backgrounds/kingdom-hearts.jpeg"
+				onClick="playVGMTrack(this)">Kingdom Hearts - Hollow Bastion</li>
+				
+				<li data-path="music/minecraft-mice-on-venus.mp3"
+				background-path="backgrounds/minecraft.jpeg"
+				onClick="playVGMTrack(this)">Minecraft - Mice on Venus</li>			
+				
 				<li data-path="music/octopath-traveler-main-theme.mp3"
 				background-path="backgrounds/octopath-traveler.jpeg"
-				onClick="playVGMTrack(this)">Octopath Traveler: Main Theme</li>
+				onClick="playVGMTrack(this)">Octopath Traveler - Main Theme</li>
+				
+				<li data-path="music/phoenix-wright-ace-attorney-dick-gumshoe-detective-gumshoe-pal.mp3"
+				background-path="backgrounds/phoenix-wright.jpeg"
+				onClick="playVGMTrack(this)">Phoenix Wright: Ace Attorney - Dick Gumshoe ~ Detective Gumshoe, Pal</li>
+				
+				<li data-path="music/xenoblade-chronicles-x-nightl.mp3"
+				background-path="backgrounds/xenoblade-chronicles-x.png"
+				onClick="playVGMTrack(this)">Xenoblade Chronicles X - N木ig木ht木L</li>
 			</ul>
 		</div>
 	</body>
@@ -52,7 +76,7 @@
 		var VGM_TRACK = document.getElementById("vgm-track");
 		const NOW_PLAYING = "playing";
 		
-		AUDIO_PLAYER.volume = 0.3;
+		AUDIO_PLAYER.volume = 0.2;
 		
 		playVGMTrack(chooseRandomTrack());
 		

@@ -1,0 +1,16 @@
+.playing {
+	font-weight: bold;
+}
+
+#audio-player-container, #audio-controls, #title {
+	text-align: center;
+}
+
+#title h1 {
+	color: #FFFFFF;
+}
+
+#tracks {
+	background-color: #FFFFFF;
+	opacity: 0.75;
+}

@@ -9,29 +9,21 @@
 		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
 	</head>
 	<body>
-		<div id="title">
-			<h1>Zhadn's VGM Playlist</h1>
-		</div>
-		<div id="audio-player-container">
-			<audio id="audio-player"
-			controls
-			autoplay
-			preload="auto">
-				<source id="vgm-track"
-				src=""
-				type="audio/mpeg">
-				Your browser does not support the audio element.
-			</audio>
-		</div>
-		<div id="audio-controls">
-			<button onclick="AUDIO_PLAYER.play()">Play</button>
-			<button onclick="AUDIO_PLAYER.pause()">Pause</button>
-			<button onclick="AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted">Mute</button>
-			<button onclick="changeVolume(0.1)">+</button>
-			<button onclick="changeVolume(-0.1)">-</button>
+		<div id="audio-card-container">
+			<div id="title"><h1>Zhadn's VGM Playlist</h1></div>
+			<div id="audio-player-container">
+				<audio id="audio-player"
+				controls
+				autoplay
+				preload="auto">
+					<source id="vgm-track"
+					src=""
+					type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
+			</div>
 		</div>
 		<div id="tracks">
-			<h2>Zhadn's VGM Tracks</h2>
 			<ul id="vgm-tracks">
 				<li data-path="music/chrono-cross-dream-of-the-shore-near-another-world.mp3"
 				background-path="images/backgrounds/chrono-cross.jpeg"
@@ -77,6 +69,13 @@
 				background-path="images/backgrounds/xenoblade-chronicles-x.png"
 				onClick="playVGMTrack(this)"><span>Xenoblade Chronicles X - N木ig木ht木L</span></li>
 			</ul>
+		</div>
+		<div id="audio-controls">
+			<button onclick="AUDIO_PLAYER.play()">Play</button>
+			<button onclick="AUDIO_PLAYER.pause()">Pause</button>
+			<button onclick="AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted">Mute</button>
+			<button onclick="changeVolume(0.1)">+</button>
+			<button onclick="changeVolume(-0.1)">-</button>
 		</div>
 	</body>
 	<script>

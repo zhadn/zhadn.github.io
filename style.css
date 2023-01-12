@@ -1,3 +1,7 @@
+body {
+	font-family: "Verdana", sans-serif;
+}
+
 li {
 	border: 1px solid black;
 	padding-top: 0.25em;
@@ -17,25 +21,36 @@ ul {
 	font-weight: bold;
 }
 
-#audio-player-container, #audio-controls, #title {
+#audio-card-container, #audio-player-container, #audio-controls, #title {
 	text-align: center;
 }
 
-#title h1 {	
-	color: #FFFFFF;
+#audio-card-container {
+	padding-top: 0.5em;
+	padding-bottom: 1em;
 }
+
+#audio-player {
+	width: 50%;
+}
+
+#title h1 {	
+	color: #000000;
+	text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
+}
+
 
 #tracks {
 	background-color: #FFFFFF;
-	font-family: "Verdana", sans-serif;
 	opacity: 0.75;
 }
 
 #tracks .playing {
 	color: #FFFFFF;
 	background-color: #000000;
+	text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
 }
 
-#vgm-tracks {
+#vgm-tracks, #audio-controls button {
 	cursor: pointer;
 }

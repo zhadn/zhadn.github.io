@@ -137,13 +137,13 @@
 			let trackInfo = track.innerText;			
 			let trackInfoArray = trackInfo.split("-");
 
-			let game = trackInfoArray[0].trim();
-			let track = trackInfoArray[1].trim();
+			let gameTitle = trackInfoArray[0].trim();
+			let tracktitle = trackInfoArray[1].trim();
 
 			if ('mediaSession' in navigator) {
 				navigator.mediaSession.metadata = new MediaMetadata({
-					title: track,
-					album: game,	
+					title: tracktitle,
+					artist: gameTitle,	
 			  });
 			}
 		}

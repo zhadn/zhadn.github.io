@@ -6,7 +6,7 @@
 		<meta name="description" content="Listen to Zhadn's Video Game Music (VGM) Playlist.">
 		
 		<!-- Z icon by Icons8 -->
-		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
 	</head>
 	<body>
 		<div id="audio-card-container">
@@ -79,19 +79,20 @@
 		</div>
 	</body>
 	<script>
+		
 		var AUDIO_PLAYER = document.getElementById("audio-player");
 		var VGM_TRACK = document.getElementById("vgm-track");
 		const NOW_PLAYING = "playing";
 		
-		AUDIO_PLAYER.volume = 0.2;
-		
+		setAudioDefaults();
 		playVGMTrack(chooseRandomTrack());
 		
 		AUDIO_PLAYER.onended = function() {
 			playVGMTrack(chooseRandomTrack());
 		};
 		
-		function playVGMTrack(track){
+		function playVGMTrack(track) {
+			
 			let lastPlayedTrack = document.getElementsByClassName(NOW_PLAYING)[0];
 			
 			if (lastPlayedTrack){
@@ -100,12 +101,16 @@
 			
 			track.classList.add(NOW_PLAYING);
 			VGM_TRACK.src = track.getAttribute("data-path");
+			
+			manageMediaControls(track);
+			
 			AUDIO_PLAYER.load();
 			
 			setGameBackgroundImage(track.getAttribute("background-path"));
 		}
 		
 		function chooseRandomTrack() {
+			
 			let vgmTracks = document.getElementById("vgm-tracks");
 			let listOfTracks = vgmTracks.getElementsByTagName('li');
 			let numberOfTracks = listOfTracks.length;
@@ -118,10 +123,32 @@
 		}
 		
 		function setGameBackgroundImage(background) {
-			document.body.style.backgroundImage = "url('"+background+"')";
+			
+			document.body.style.backgroundImage = "url('"+background+"')";	
 		}
 		
-		function changeVolume(increment){
+		function setAudioDefaults() {
+			
+			AUDIO_PLAYER.volume = 0.2;	
+		}
+		
+		function manageMediaControls(track) {
+			
+			let trackInfo = track.innerText;			
+			let trackInfoArray = trackInfo.split("-");
+
+			let albumName = trackInfoArray[0];
+			let titleName = trackInfoArray[1]
+			
+			if ('mediaSession' in navigator) {
+				navigator.mediaSession.metadata = new MediaMetadata({
+					title: albumName,
+					album: titleName,
+			  });
+			}
+		}
+		
+		function changeVolume(increment) {
 			
 			// console.log("START: " + AUDIO_PLAYER.volume);
 			newIncrement = (AUDIO_PLAYER.volume + increment).toFixed(2);

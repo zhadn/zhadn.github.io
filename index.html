@@ -137,9 +137,9 @@
 			let trackInfo = track.innerText;			
 			let trackInfoArray = trackInfo.split("-");
 
-			let albumName = trackInfoArray[0];
-			let titleName = trackInfoArray[1]
-			
+			let albumName = trackInfoArray[0].trim();
+			let titleName = trackInfoArray[1].trim();
+
 			if ('mediaSession' in navigator) {
 				navigator.mediaSession.metadata = new MediaMetadata({
 					title: albumName,

@@ -2,11 +2,6 @@ body {
 	font-family: "Verdana", sans-serif;
 }
 
-img {
-    max-width: 100%; 
-    max-height: 100%;	
-}
-
 li {
 	border: 1px solid black;
 	padding-top: 0.25em;

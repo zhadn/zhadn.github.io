@@ -16,7 +16,7 @@ function playVGMTrack(track) {
 	if (lastPlayedTrack){
 		lastPlayedTrack.classList.remove(NOW_PLAYING);
 	}
-	
+		
 	track.classList.add(NOW_PLAYING);
 	VGM_TRACK.src = track.getAttribute("data-path");
 	

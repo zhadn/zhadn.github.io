@@ -2,12 +2,17 @@
 var AUDIO_PLAYER = document.getElementById("audio-player");
 var AUDIO_PLAYER_TRACK = document.getElementById("audio-player-track");
 
-// globals for track information
+// globals for track collection information
 var VGM_TRACKS = document.getElementById("vgm-tracks");
 var VGM_TRACKS_COLLECTION = VGM_TRACKS.getElementsByTagName('li');
 var VGM_TRACKS_COLLECTION_LENGTH = VGM_TRACKS_COLLECTION.length;
+
+// globals for track controls and state information
 var FIRST_TRACK = VGM_TRACKS_COLLECTION[0];
+var CURRENT_TRACK = FIRST_TRACK;
 var NEXT_TRACK = VGM_TRACKS_COLLECTION[1];
+var PREVIOUS_TRACKS = new Array();
+var PREVIOUS_TRACK_RETURN = false;
 const NOW_PLAYING = "playing"; // css class
 
 // set volume defaults, and load the first game track
@@ -35,11 +40,21 @@ function chooseRandomTrack() {
 
 function loadVGMTrack(track) {
 	
-	// undefined on first load
+	// set active track
+	CURRENT_TRACK = track;
+
+	// keep state of previous tracks | undefined on first load
 	let finishedTrack = VGM_TRACKS.getElementsByClassName(NOW_PLAYING)[0];
 	
 	if (finishedTrack){
 		finishedTrack.classList.remove(NOW_PLAYING);
+		
+		// Do not add tracks to the array if the listener is returning to previous tracks
+		if (!PREVIOUS_TRACK_RETURN) {
+			PREVIOUS_TRACKS.push(finishedTrack);
+		} else {
+			PREVIOUS_TRACK_RETURN = false;
+		}
 	}
 
 	// set css styling for the active track, and set the next track
@@ -70,7 +85,8 @@ function setMediaSession(track) {
 			title: tracktitle,
 			artist: gameTitle,	
 	  });
-	  
+	
+	navigator.mediaSession.setActionHandler("previoustrack", playPreviousVGMTrack);  
 	navigator.mediaSession.setActionHandler("nexttrack", playNextVGMTrack);
 	}
 }
@@ -78,6 +94,17 @@ function setMediaSession(track) {
 function setGameBackgroundImage(background) {
 	
 	document.body.style.backgroundImage = "url('"+background+"')";	
+}
+
+function playPreviousVGMTrack() {
+	
+	PREVIOUS_TRACK_RETURN = true;
+	
+	if (PREVIOUS_TRACKS.length) {
+		loadVGMTrack(PREVIOUS_TRACKS.pop());
+	} else {
+		loadVGMTrack(CURRENT_TRACK);
+	}
 }
 
 function playNextVGMTrack() {

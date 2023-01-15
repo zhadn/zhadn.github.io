@@ -65,10 +65,10 @@ function loadVGMTrack(track) {
 	setMediaSession(track);
 	
 	// set a background image associated with the track
-	setGameBackgroundImage(track.getAttribute("background-path"));
+	setGameBackgroundImage(track.getAttribute("data-background-path"));
 	
 	// load track information and re-load the audio player
-	AUDIO_PLAYER_TRACK.src = track.getAttribute("data-path");
+	AUDIO_PLAYER_TRACK.src = track.getAttribute("data-music-path");
 	AUDIO_PLAYER.load();
 }
 

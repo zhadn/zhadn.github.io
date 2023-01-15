@@ -85,13 +85,13 @@
 			</ul>
 		</div>
 		<div id="audio-controls">
-			<button onclick="playPreviousVGMTrack()">Previous</button>
-			<button onclick="AUDIO_PLAYER.play()">Play</button>
-			<button onclick="AUDIO_PLAYER.pause()">Pause</button>
-			<button onclick="playNextVGMTrack()">Next</button>
-			<button onclick="AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted">Mute</button>
-			<button onclick="changeVolume(0.1)">+</button>
-			<button onclick="changeVolume(-0.1)">-</button>
+			<button id="previous" onclick="playPreviousVGMTrack()">Previous</button>
+			<button id="play" onclick="AUDIO_PLAYER.play()">Play</button>
+			<button id="pause" onclick="AUDIO_PLAYER.pause()">Pause</button>
+			<button id="next" onclick="playNextVGMTrack()">Next</button>
+			<button id="mute" onclick="muteVGMPlayer()">Mute</button>
+			<button id="volume-up" onclick="changeVolume(0.1)">+</button>
+			<button id="volume-down" onclick="changeVolume(-0.1)">-</button>
 		</div>
 	</body>
 </html>

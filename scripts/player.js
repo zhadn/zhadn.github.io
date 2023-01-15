@@ -15,6 +15,11 @@ var PREVIOUS_TRACKS = [];
 var PREVIOUS_TRACK_RETURN = false;
 const NOW_PLAYING = "playing"; // css class
 
+// globals for audio controls
+var MUTE_BUTTON = document.getElementById("mute");
+var VOLUME_UP_BUTTON = document.getElementById("volume-up");
+var VOLUME_DOWN_BUTTON = document.getElementById("volume-down");
+
 // set volume defaults, and load the first game track
 setAudioDefaults();
 loadVGMTrack(chooseRandomTrack());
@@ -113,6 +118,23 @@ function playNextVGMTrack() {
 		loadVGMTrack(NEXT_TRACK);
 	} else {
 		loadVGMTrack(FIRST_TRACK);
+	}
+}
+
+function muteVGMPlayer() {
+	
+	if (!AUDIO_PLAYER.muted) {
+		AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted
+		
+		MUTE_BUTTON.innerText="Unmute";
+		VOLUME_UP_BUTTON.disabled = true;
+		VOLUME_DOWN_BUTTON.disabled = true;
+	} else {
+		AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted
+		
+		MUTE_BUTTON.innerText="Mute";
+		VOLUME_UP_BUTTON.disabled = false;
+		VOLUME_DOWN_BUTTON.disabled = false;
 	}
 }
 

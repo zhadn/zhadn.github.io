@@ -3,18 +3,18 @@ var VGM_TRACK = document.getElementById("vgm-track");
 const NOW_PLAYING = "playing";
 
 setAudioDefaults();
-playVGMTrack(chooseRandomTrack());
+loadVGMTrack(chooseRandomTrack());
 
 AUDIO_PLAYER.onended = function() {
-	playVGMTrack(chooseRandomTrack());
+	loadVGMTrack(chooseRandomTrack());
 };
 
-function playVGMTrack(track) {
+function loadVGMTrack(track) {
 	
-	let lastPlayedTrack = document.getElementsByClassName(NOW_PLAYING)[0];
+	let currentTrack = document.getElementsByClassName(NOW_PLAYING)[0];
 	
-	if (lastPlayedTrack){
-		lastPlayedTrack.classList.remove(NOW_PLAYING);
+	if (currentTrack){
+		currentTrack.classList.remove(NOW_PLAYING);
 	}
 
 	track.classList.add(NOW_PLAYING);
@@ -25,6 +25,30 @@ function playVGMTrack(track) {
 	AUDIO_PLAYER.load();
 	
 	setGameBackgroundImage(track.getAttribute("background-path"));
+}
+
+// Unused
+function restartVGMTrack() {
+	
+	let currentTrack = document.getElementsByClassName(NOW_PLAYING)[0];
+	
+	if (currentTrack){
+		let nextTrack = currentTrack.nextSibling;
+		loadVGMTrack(currentTrack);
+	}
+}
+
+function playNextVGMTrack() {
+	
+	let vgmTracks = document.getElementById("vgm-tracks");
+	let firstTrack = vgmTracks.getElementsByTagName('li')[0];
+	let nextTrack = vgmTracks.getElementsByClassName(NOW_PLAYING)[0].nextElementSibling;
+	
+	if (nextTrack){
+		loadVGMTrack(nextTrack);
+	} else {
+		loadVGMTrack(firstTrack);
+	}
 }
 
 function chooseRandomTrack() {
@@ -63,18 +87,16 @@ function manageMediaControls(track) {
 			title: tracktitle,
 			artist: gameTitle,	
 	  });
+	  
+	  navigator.mediaSession.setActionHandler('nexttrack', () => playNextVGMTrack());
 	}
 }
 
 function changeVolume(increment) {
 	
-	console.log("START: " + AUDIO_PLAYER.volume);
 	newIncrement = (AUDIO_PLAYER.volume + increment).toFixed(2);
 	
 	if (newIncrement >= 0 && newIncrement <= 1){
 		AUDIO_PLAYER.volume=newIncrement;
-		console.log("END:"
-		+
-		AUDIO_PLAYER.volume);
 	}
 }

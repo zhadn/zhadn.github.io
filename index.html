@@ -30,52 +30,53 @@
 			<ul id="vgm-tracks">
 				<li data-path="media/music/chrono-cross-dream-of-the-shore-near-another-world.mp3"
 				background-path="media/images/backgrounds/chrono-cross.jpeg"
-				onClick="playVGMTrack(this)"><span>Chrono Cross - Dream of the Shore Near Another World</span></li>
+				onClick="loadVGMTrack(this)"><span>Chrono Cross - Dream of the Shore Near Another World</span></li>
 				
 				<li data-path="media/music/deltarune-field-of-hopes-and-dreams.mp3"
 				background-path="media/images/backgrounds/deltarune.jpeg"
-				onClick="playVGMTrack(this)"><span>Deltarune - Field of Hopes and Dreams</span></li>
+				onClick="loadVGMTrack(this)"><span>Deltarune - Field of Hopes and Dreams</span></li>
 				
 				<li data-path="media/music/donkey-kong-country-aquatic-ambience.mp3"
 				background-path="media/images/backgrounds/donkey-kong-country.jpeg"
-				onClick="playVGMTrack(this)"><span>Donkey Kong Country - Aquatic Ambience</span></li>
+				onClick="loadVGMTrack(this)"><span>Donkey Kong Country - Aquatic Ambience</span></li>
 				
 				<li data-path="media/music/final-fantasy-x-sprouting.mp3"
 				background-path="media/images/backgrounds/final-fantasy-x.png"
-				onClick="playVGMTrack(this)"><span>Final Fantasy X - Sprouting</span></li>
+				onClick="loadVGMTrack(this)"><span>Final Fantasy X - Sprouting</span></li>
 				
 				<li data-path="media/music/fire-emblem-three-houses-the-apex-of-the-world-(rain).mp3"
 				background-path="media/images/backgrounds/fire-emblem-three-houses.jpeg"
-				onClick="playVGMTrack(this)"><span>Fire Emblem: Three Houses - The Apex of the World (Rain)</span></li>
+				onClick="loadVGMTrack(this)"><span>Fire Emblem: Three Houses - The Apex of the World (Rain)</span></li>
 				
 				<li data-path="media/music/ghost-of-tsushima-sacrifice-of-tradition.mp3"
 				background-path="media/images/backgrounds/ghost-of-tsushima.jpeg"
-				onClick="playVGMTrack(this)"><span>Ghost of Tsushima - Sacrifice of Tradition</span></li>
+				onClick="loadVGMTrack(this)"><span>Ghost of Tsushima - Sacrifice of Tradition</span></li>
 				
 				<li data-path="media/music/kingdom-hearts-hollow-bastion.mp3"
 				background-path="media/images/backgrounds/kingdom-hearts.jpeg"
-				onClick="playVGMTrack(this)"><span>Kingdom Hearts - Hollow Bastion</span></li>
+				onClick="loadVGMTrack(this)"><span>Kingdom Hearts - Hollow Bastion</span></li>
 				
 				<li data-path="media/music/the-legend-of-zelda-breath-of-the-wild-hateno-village-(day).mp3"
 				background-path="media/images/backgrounds/the-legend-of-zelda.jpeg"
-				onClick="playVGMTrack(this)"><span>The Legend of Zelda: Breath of the Wild - Hateno Village (Day)</span></li>
+				onClick="loadVGMTrack(this)"><span>The Legend of Zelda: Breath of the Wild - Hateno Village (Day)</span></li>
 				
 				<li data-path="media/music/minecraft-mice-on-venus.mp3"
 				background-path="media/images/backgrounds/minecraft.jpeg"
-				onClick="playVGMTrack(this)"><span>Minecraft - Mice on Venus</span></li>			
+				onClick="loadVGMTrack(this)"><span>Minecraft - Mice on Venus</span></li>			
 				
 				<li data-path="media/music/octopath-traveler-main-theme.mp3"
 				background-path="media/images/backgrounds/octopath-traveler.jpeg"
-				onClick="playVGMTrack(this)"><span>Octopath Traveler - Main Theme</span></li>
+				onClick="loadVGMTrack(this)"><span>Octopath Traveler - Main Theme</span></li>
 				
 				<li data-path="media/music/phoenix-wright-ace-attorney-dick-gumshoe-detective-gumshoe-pal.mp3"
 				background-path="media/images/backgrounds/phoenix-wright.jpeg"
-				onClick="playVGMTrack(this)"><span>Phoenix Wright: Ace Attorney - Dick Gumshoe ~ Detective Gumshoe, Pal</span></li>
+				onClick="loadVGMTrack(this)"><span>Phoenix Wright: Ace Attorney - Dick Gumshoe ~ Detective Gumshoe, Pal</span></li>
 			</ul>
 		</div>
 		<div id="audio-controls">
 			<button onclick="AUDIO_PLAYER.play()">Play</button>
 			<button onclick="AUDIO_PLAYER.pause()">Pause</button>
+			<button onclick="playNextVGMTrack()">Next</button>
 			<button onclick="AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted">Mute</button>
 			<button onclick="changeVolume(0.1)">+</button>
 			<button onclick="changeVolume(-0.1)">-</button>

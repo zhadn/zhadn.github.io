@@ -88,7 +88,7 @@ function manageMediaControls(track) {
 			artist: gameTitle,	
 	  });
 	  
-	  navigator.mediaSession.setActionHandler('nexttrack', () => playNextVGMTrack());
+	navigator.mediaSession.setActionHandler("nexttrack", playNextVGMTrack);
 	}
 }
 

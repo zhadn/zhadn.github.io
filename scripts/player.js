@@ -194,12 +194,12 @@ function changeVolume(dt) {
 	if (newVolume >= 0 && newVolume <= 1){
 		AUDIO_PLAYER.volume = newVolume;
 	} 
+
+	// set volume to 0 for negative decrements on ~0.01 to ~0.09 
+	if (newVolume <= 0) { AUDIO_PLAYER.volume = 0; }
 	
 	// set volume to 1 for positive increments on ~0.91 to ~0.99  
 	if (newVolume >= 1) { AUDIO_PLAYER.volume = 1; }
-	
-	// set volume to 0 for negative decrements on ~0.01 to ~0.09 
-	if (newVolume <= 0) { AUDIO_PLAYER.volume = 0; }
 }
 
 function loopVGMTrack() {

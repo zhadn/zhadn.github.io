@@ -25,6 +25,19 @@ ul {
 	text-align: center;
 }
 
+#audio-controls button { 
+	font-weight: bold;
+	font-size: 1em;
+	color: #f0f0f0;
+	background-color: #181818;
+	border-radius: 0.5em;
+}
+
+#audio-controls button:disabled { 
+	background-color: gray;
+}
+
+
 #audio-card-container {
 	padding-top: 0.5em;
 	padding-bottom: 1em;

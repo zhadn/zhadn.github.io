@@ -36,6 +36,15 @@
 				</audio>
 			</div>
 		</div>
+		<div id="audio-controls">
+			<button id="previous" onclick="playPreviousVGMTrack()">Previous</button>
+			<button id="play" onclick="playVGMTrack()">Play</button>
+			<button id="next" onclick="playNextVGMTrack()">Next</button>
+			<button id="mute" onclick="muteVGMPlayer()">Mute</button>
+			<button id="volume-down" onclick="changeVolume(-0.1)">-</button>
+			<button id="volume-up" onclick="changeVolume(0.1)">+</button>
+			<button id="loop" onclick="loopVGMTrack()">Loop</button>
+		</div>
 		<hr>
 		<div id="tracks">
 			<ul id="vgm-tracks">
@@ -83,15 +92,6 @@
 				data-background-path="media/images/backgrounds/phoenix-wright.jpeg"
 				onClick="loadVGMTrack(this)"><span>Phoenix Wright: Ace Attorney - Dick Gumshoe ~ Detective Gumshoe, Pal</span></li>
 			</ul>
-		</div>
-		<div id="audio-controls">
-			<button id="previous" onclick="playPreviousVGMTrack()">Previous</button>
-			<button id="play" onclick="playVGMTrack()">Play</button>
-			<button id="next" onclick="playNextVGMTrack()">Next</button>
-			<button id="mute" onclick="muteVGMPlayer()">Mute</button>
-			<button id="volume-up" onclick="changeVolume(0.1)">+</button>
-			<button id="volume-down" onclick="changeVolume(-0.1)">-</button>
-			<button id="loop" onclick="loopVGMTrack()">Loop</button>
 		</div>
 	</body>
 </html>

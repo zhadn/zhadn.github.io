@@ -29,6 +29,28 @@ AUDIO_PLAYER.onended = function() {
 	loadVGMTrack(chooseRandomTrack());
 };
 
+// control display of volume control buttons
+AUDIO_PLAYER.onvolumechange = function() {
+		
+	// disable volume control increment at max volume 
+	if (AUDIO_PLAYER.volume == 1) {
+		VOLUME_UP_BUTTON.disabled = true;
+	} else {
+		VOLUME_UP_BUTTON.disabled = false;
+	}
+	
+	// disable volume controls at min volume 
+	if (AUDIO_PLAYER.volume == 0 || AUDIO_PLAYER.muted) {
+		AUDIO_PLAYER.muted = true;
+		MUTE_BUTTON.innerText = "Unmute";
+		VOLUME_UP_BUTTON.disabled = true;
+		VOLUME_DOWN_BUTTON.disabled = true;
+	} else {
+		MUTE_BUTTON.innerText = "Mute";
+		VOLUME_DOWN_BUTTON.disabled = false;
+	}
+};
+
 function setAudioDefaults() {
 	
 	AUDIO_PLAYER.volume = 0.2;	
@@ -124,25 +146,30 @@ function playNextVGMTrack() {
 function muteVGMPlayer() {
 	
 	if (!AUDIO_PLAYER.muted) {
-		AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted
-		
-		MUTE_BUTTON.innerText="Unmute";
-		VOLUME_UP_BUTTON.disabled = true;
-		VOLUME_DOWN_BUTTON.disabled = true;
+		AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted;
 	} else {
-		AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted
+		AUDIO_PLAYER.muted = !AUDIO_PLAYER.muted;
 		
-		MUTE_BUTTON.innerText="Mute";
-		VOLUME_UP_BUTTON.disabled = false;
-		VOLUME_DOWN_BUTTON.disabled = false;
+		// set a minimum volume when unmuting the audio player from a muted state
+		if (AUDIO_PLAYER.volume == 0) {
+			AUDIO_PLAYER.volume = 0.1;
+		}
 	}
 }
 
-function changeVolume(increment) {
+function changeVolume(dt) {
 	
-	newIncrement = (AUDIO_PLAYER.volume + increment).toFixed(2);
+	let volumeChange = AUDIO_PLAYER.volume + dt;
+	let newVolume = volumeChange.toFixed(2);
 	
-	if (newIncrement >= 0 && newIncrement <= 1){
-		AUDIO_PLAYER.volume=newIncrement;
-	}
+	// add volume dt according to +/- volume controls
+	if (newVolume >= 0 && newVolume <= 1){
+		AUDIO_PLAYER.volume = newVolume;
+	} 
+	
+	// set volume to 1 for positive increments on ~0.91 to ~0.99  
+	if (newVolume >= 1) { AUDIO_PLAYER.volume = 1; }
+	
+	// set volume to 0 for negative decrements on ~0.01 to ~0.09 
+	if (newVolume <= 0) { AUDIO_PLAYER.volume = 0; }
 }

@@ -13,12 +13,19 @@ var CURRENT_TRACK = FIRST_TRACK;
 var NEXT_TRACK = VGM_TRACKS_COLLECTION[1];
 var PREVIOUS_TRACKS = [];
 var PREVIOUS_TRACK_RETURN = false;
-const NOW_PLAYING = "playing"; // css class
 
-// globals for audio controls
+// globals for button controls
+var PLAY_BUTTON = document.getElementById("play");
 var MUTE_BUTTON = document.getElementById("mute");
 var VOLUME_UP_BUTTON = document.getElementById("volume-up");
 var VOLUME_DOWN_BUTTON = document.getElementById("volume-down");
+
+// global constants
+const NOW_PLAYING = "playing"; // css class
+const PLAY_BUTTON_TEXT = "Play"; 
+const PAUSE_BUTTON_TEXT = "Pause";
+const MUTE_BUTTON_TEXT = "Mute";
+const UNMUTE_BUTTON_TEXT = "Unmute";
 
 // set volume defaults, and load the first game track
 setAudioDefaults();
@@ -42,11 +49,11 @@ AUDIO_PLAYER.onvolumechange = function() {
 	// disable volume controls at min volume 
 	if (AUDIO_PLAYER.volume == 0 || AUDIO_PLAYER.muted) {
 		AUDIO_PLAYER.muted = true;
-		MUTE_BUTTON.innerText = "Unmute";
+		MUTE_BUTTON.innerText = UNMUTE_BUTTON_TEXT;
 		VOLUME_UP_BUTTON.disabled = true;
 		VOLUME_DOWN_BUTTON.disabled = true;
 	} else {
-		MUTE_BUTTON.innerText = "Mute";
+		MUTE_BUTTON.innerText = MUTE_BUTTON_TEXT;
 		VOLUME_DOWN_BUTTON.disabled = false;
 	}
 };
@@ -97,6 +104,9 @@ function loadVGMTrack(track) {
 	// load track information and re-load the audio player
 	AUDIO_PLAYER_TRACK.src = track.getAttribute("data-music-path");
 	AUDIO_PLAYER.load();
+	
+	// ensure play button switched to pause button text
+	PLAY_BUTTON.innerText = PAUSE_BUTTON_TEXT;
 }
 
 function setMediaSession(track) {
@@ -121,6 +131,17 @@ function setMediaSession(track) {
 function setGameBackgroundImage(background) {
 	
 	document.body.style.backgroundImage = "url('"+background+"')";	
+}
+
+function playVGMTrack() {
+	
+	if (AUDIO_PLAYER.paused) {
+		AUDIO_PLAYER.play();
+		PLAY_BUTTON.innerText = PAUSE_BUTTON_TEXT;
+	} else {
+		AUDIO_PLAYER.pause();
+		PLAY_BUTTON.innerText = PLAY_BUTTON_TEXT;
+	}
 }
 
 function playPreviousVGMTrack() {

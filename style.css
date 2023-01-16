@@ -51,6 +51,10 @@ ul {
 	text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
 }
 
+#tracks .looping {
+	background-color: blue;
+}
+
 #vgm-tracks, #audio-controls button {
 	cursor: pointer;
 }

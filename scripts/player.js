@@ -19,13 +19,20 @@ var PLAY_BUTTON = document.getElementById("play");
 var MUTE_BUTTON = document.getElementById("mute");
 var VOLUME_UP_BUTTON = document.getElementById("volume-up");
 var VOLUME_DOWN_BUTTON = document.getElementById("volume-down");
+var LOOP_BUTTON = document.getElementById("loop");
+
 
 // global constants
-const NOW_PLAYING = "playing"; // css class
 const PLAY_BUTTON_TEXT = "Play"; 
 const PAUSE_BUTTON_TEXT = "Pause";
 const MUTE_BUTTON_TEXT = "Mute";
 const UNMUTE_BUTTON_TEXT = "Unmute";
+const LOOP_BUTTON_TEXT = "Loop"
+const LOOPING_BUTTON_TEXT = "Stop Looping"
+
+// CSS constants
+const PLAYING = "playing";
+const LOOPING = "looping"; 
 
 // set volume defaults, and load the first game track
 setAudioDefaults();
@@ -36,7 +43,7 @@ AUDIO_PLAYER.onended = function() {
 	loadVGMTrack(chooseRandomTrack());
 };
 
-// control play / pause button text 
+// control text of global buttons  
 AUDIO_PLAYER.onplay = function() { PLAY_BUTTON.innerText = PAUSE_BUTTON_TEXT; };
 AUDIO_PLAYER.onpause = function() { PLAY_BUTTON.innerText = PLAY_BUTTON_TEXT; };
 
@@ -71,7 +78,7 @@ function chooseRandomTrack() {
 		
 	do {
 		var randomTrackID = Math.floor(Math.random() * VGM_TRACKS_COLLECTION_LENGTH);
-	} while (VGM_TRACKS_COLLECTION[randomTrackID].classList.contains(NOW_PLAYING));
+	} while (VGM_TRACKS_COLLECTION[randomTrackID].classList.contains(PLAYING));
 	
 	return VGM_TRACKS_COLLECTION[randomTrackID];
 }
@@ -82,12 +89,13 @@ function loadVGMTrack(track) {
 	CURRENT_TRACK = track;
 
 	// keep state of previous tracks | undefined on first load
-	let finishedTrack = VGM_TRACKS.getElementsByClassName(NOW_PLAYING)[0];
+	let finishedTrack = VGM_TRACKS.getElementsByClassName(PLAYING)[0];
 	
 	if (finishedTrack){
-		finishedTrack.classList.remove(NOW_PLAYING);
+		finishedTrack.classList.remove(PLAYING);
+		clearLoopingLogic(finishedTrack);
 		
-		// Do not add tracks to the array if the listener is returning to previous tracks
+		// do not add tracks to the array if the listener is returning to previous tracks
 		if (!PREVIOUS_TRACK_RETURN) {
 			PREVIOUS_TRACKS.push(finishedTrack);
 		} else {
@@ -96,8 +104,8 @@ function loadVGMTrack(track) {
 	}
 
 	// set css styling for the active track, and set the next track
-	track.classList.add(NOW_PLAYING);
-	NEXT_TRACK = VGM_TRACKS.getElementsByClassName(NOW_PLAYING)[0].nextElementSibling;
+	track.classList.add(PLAYING);
+	NEXT_TRACK = VGM_TRACKS.getElementsByClassName(PLAYING)[0].nextElementSibling;
 
 	// use Media Session API for metadata and media playback interactions
 	setMediaSession(track);
@@ -192,4 +200,23 @@ function changeVolume(dt) {
 	
 	// set volume to 0 for negative decrements on ~0.01 to ~0.09 
 	if (newVolume <= 0) { AUDIO_PLAYER.volume = 0; }
+}
+
+function loopVGMTrack() {
+	
+	if (!AUDIO_PLAYER.loop) {
+		AUDIO_PLAYER.loop = !AUDIO_PLAYER.loop;
+		CURRENT_TRACK.classList.add(LOOPING);
+		LOOP_BUTTON.innerText = LOOPING_BUTTON_TEXT;
+	} else {
+		AUDIO_PLAYER.loop = !AUDIO_PLAYER.loop;
+		CURRENT_TRACK.classList.remove(LOOPING);
+		LOOP_BUTTON.innerText = LOOP_BUTTON_TEXT;
+	}
+}
+
+function clearLoopingLogic(finishedTrack) {
+	finishedTrack.classList.remove(LOOPING);
+	LOOP_BUTTON.innerText = LOOP_BUTTON_TEXT;
+	AUDIO_PLAYER.loop = false;
 }

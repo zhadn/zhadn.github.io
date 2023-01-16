@@ -36,6 +36,10 @@ AUDIO_PLAYER.onended = function() {
 	loadVGMTrack(chooseRandomTrack());
 };
 
+// control play / pause button text 
+AUDIO_PLAYER.onplay = function() { PLAY_BUTTON.innerText = PAUSE_BUTTON_TEXT; };
+AUDIO_PLAYER.onpause = function() { PLAY_BUTTON.innerText = PLAY_BUTTON_TEXT; };
+
 // control display of volume control buttons
 AUDIO_PLAYER.onvolumechange = function() {
 		
@@ -104,9 +108,6 @@ function loadVGMTrack(track) {
 	// load track information and re-load the audio player
 	AUDIO_PLAYER_TRACK.src = track.getAttribute("data-music-path");
 	AUDIO_PLAYER.load();
-	
-	// ensure play button switched to pause button text
-	PLAY_BUTTON.innerText = PAUSE_BUTTON_TEXT;
 }
 
 function setMediaSession(track) {
@@ -137,10 +138,8 @@ function playVGMTrack() {
 	
 	if (AUDIO_PLAYER.paused) {
 		AUDIO_PLAYER.play();
-		PLAY_BUTTON.innerText = PAUSE_BUTTON_TEXT;
 	} else {
 		AUDIO_PLAYER.pause();
-		PLAY_BUTTON.innerText = PLAY_BUTTON_TEXT;
 	}
 }
 

@@ -1,0 +1,106 @@
+[
+  {
+    "title": "Dream of the Shore Near Another World",
+    "game": "Chrono Cross",
+    "composer": "Yasunori Mitsuda",
+    "year": "1999",
+    "src": "chrono-cross_dream-of-the-shore-near-another-world.mp3",
+    "background": "chrono-cross.jpeg"
+  },
+  {
+    "title": "Field of Hopes and Dreams",
+    "game": "Deltarune",
+    "composer": "Toby Fox",
+    "year": "2018",
+    "src": "deltarune_field-of-hopes-and-dreams.mp3",
+    "background": "deltarune.jpeg"
+  },
+  {
+    "title": "Aquatic Ambience",
+    "game": "Donkey Kong Country",
+    "composer": "David Wise",
+    "year": "1994",
+    "src": "donkey-kong-country_aquatic-ambience.mp3",
+    "background": "donkey-kong-country.jpeg"
+  },
+  {
+    "title": "Sprouting",
+    "game": "Final Fantasy X",
+    "composer": "Nobuo Uematsu, Junya Nakano",
+    "year": "2001",
+    "src": "final-fantasy-x_sprouting.mp3",
+    "background": "final-fantasy-x.jpeg"
+  },
+  {
+    "title": "The Apex of the World (Rain)",
+    "game": "Fire Emblem: Three Houses",
+    "composer": "Takeru Kanazaki, Hiroki Morishita, Rei Kondoh",
+    "year": "2019",
+    "src": "fire-emblem-three-houses_the-apex-of-the-world-(rain).mp3",
+    "background": "fire-emblem-three-houses.jpeg"
+  },
+  {
+    "title": "Sacrifice of Tradition",
+    "game": "Ghost of Tsushima",
+    "composer": "Ilan Eshkeri",
+    "year": "2020",
+    "src": "ghost-of-tsushima_sacrifice-of-tradition.mp3",
+    "background": "ghost-of-tsushima.jpeg"
+  },
+  {
+    "title": "LONELY ROLLING STAR",
+    "game": "Katamari Damacy",
+    "composer": "Yū Miyake",
+    "year": "2004",
+    "src": "katamari-damacy_lonely-rolling-star.mp3",
+    "background": "katamari-damacy.jpeg"
+  },
+  {
+    "title": "Hollow Bastion",
+    "game": "Kingdom Hearts",
+    "composer": "Yoko Shimomura",
+    "year": "2002",
+    "src": "kingdom-hearts_hollow-bastion.mp3",
+    "background": "kingdom-hearts.jpeg"
+  },
+  {
+    "title": "Mice on Venus",
+    "game": "Minecraft",
+    "composer": "C418",
+    "year": "2011",
+    "src": "minecraft_mice-on-venus.mp3",
+    "background": "minecraft.jpeg"
+  },
+  {
+    "title": "Main Theme",
+    "game": "Octopath Traveler",
+    "composer": "Yasunori Nishiki",
+    "year": "2018",
+    "src": "octopath-traveler_main-theme.mp3",
+    "background": "octopath-traveler.jpeg"
+  },
+  {
+    "title": "Dick Gumshoe ~ Detective Gumshoe, Pal",
+    "game": "Phoenix Wright: Ace Attorney",
+    "composer": "Masakazu Sugimori",
+    "year": "2001",
+    "src": "phoenix-wright-ace-attorney_dick-gumshoe-detective-gumshoe-pal.mp3",
+    "background": "phoenix-wright-ace-attorney.jpeg"
+  },
+  {
+    "title": "Hateno Village (Day)",
+    "game": "The Legend of Zelda: Breath of the Wild",
+    "composer": "Manaka Kataoka, Yasuaki Iwata, Hajime Wakai",
+    "year": "2017",
+    "src": "the-legend-of-zelda-breath-of-the-wild_hateno-village-(day).mp3",
+    "background": "the-legend-of-zelda-breath-of-the-wild.jpeg"
+  },
+  {
+    "title": "N木ig木ht木L",
+    "game": "Xenoblade Chronicles X",
+    "composer": "Hiroyuki Sawano",
+    "year": "2015",
+    "src": "xenoblade-chronicles-x_nightl.mp3",
+    "background": "xenoblade-chronicles-x.jpeg"
+  }
+]

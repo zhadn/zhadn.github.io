@@ -4,13 +4,13 @@ var AUDIO_PLAYER_TRACK = document.getElementById("audio-player-track");
 
 // globals for track collection information
 var VGM_TRACKS = document.getElementById("vgm-tracks");
-var VGM_TRACKS_COLLECTION = VGM_TRACKS.getElementsByTagName('li');
-var VGM_TRACKS_COLLECTION_LENGTH = VGM_TRACKS_COLLECTION.length;
+var VGM_TRACKS_COLLECTION = [];
+var VGM_TRACKS_COLLECTION_LENGTH = 0;
 
 // globals for track controls and state information
-var FIRST_TRACK = VGM_TRACKS_COLLECTION[0];
-var CURRENT_TRACK = FIRST_TRACK;
-var NEXT_TRACK = VGM_TRACKS_COLLECTION[1];
+var FIRST_TRACK = {};
+var CURRENT_TRACK = {};
+var NEXT_TRACK = {};
 var PREVIOUS_TRACKS = [];
 var PREVIOUS_TRACK_RETURN = false;
 
@@ -21,7 +21,7 @@ var VOLUME_UP_BUTTON = document.getElementById("volume-up");
 var VOLUME_DOWN_BUTTON = document.getElementById("volume-down");
 var LOOP_BUTTON = document.getElementById("loop");
 
-// global constants
+// global text constants
 const PLAY_BUTTON_TEXT = "Play"; 
 const PAUSE_BUTTON_TEXT = "Pause";
 const MUTE_BUTTON_TEXT = "Mute";
@@ -29,13 +29,20 @@ const UNMUTE_BUTTON_TEXT = "Unmute";
 const LOOP_BUTTON_TEXT = "Loop"
 const LOOPING_BUTTON_TEXT = "Stop Looping"
 
+// global path constants
+const musicPath = "media/music/"
+const backgroundPath = "media/images/backgrounds/"
+
 // CSS constants
 const PLAYING = "playing";
 const LOOPING = "looping"; 
 
+// Platlists
+const ZVGM = "scripts/tracks.json";
+
 // set volume defaults, and load the first game track
 setAudioDefaults();
-loadVGMTrack(chooseRandomTrack());
+loadPlaylist(ZVGM);
 
 // choose a random track after a track has finished playing
 AUDIO_PLAYER.onended = function() {
@@ -71,6 +78,50 @@ AUDIO_PLAYER.onvolumechange = function() {
 function setAudioDefaults() {
 	
 	AUDIO_PLAYER.volume = 0.2;	
+}
+
+function loadPlaylist(playlist) {
+	
+	fetch(playlist, {
+		method: 'GET',
+	})
+	.then(response => response.json())
+	.then((data) => {
+		buildPlaylist(data);
+	});
+}
+
+function buildPlaylist(playlistData) {
+
+	for (track of playlistData) {
+		
+		let trackElement = document.createElement("li");
+		let spanElement = document.createElement("span");
+		
+		trackElement.setAttribute("title", track.title);
+		trackElement.setAttribute("game", track.game);
+		trackElement.setAttribute("data-music-path", musicPath + track.src);
+		trackElement.setAttribute("data-background-path", backgroundPath+ track.background);
+		spanElement.innerText = track.game + ": " + track.title;
+
+		trackElement.addEventListener("click", 
+			function (e) {
+				trackClick(e);
+			});
+
+		trackElement.appendChild(spanElement);
+		VGM_TRACKS.appendChild(trackElement);
+	}
+	
+
+	VGM_TRACKS_COLLECTION = VGM_TRACKS.getElementsByTagName('li');
+	VGM_TRACKS_COLLECTION_LENGTH = VGM_TRACKS_COLLECTION.length;
+	
+	FIRST_TRACK = VGM_TRACKS_COLLECTION[0];
+	CURRENT_TRACK = FIRST_TRACK;;
+	NEXT_TRACK = VGM_TRACKS_COLLECTION[1];
+	
+	loadVGMTrack(chooseRandomTrack());
 }
 
 function chooseRandomTrack() {
@@ -119,16 +170,10 @@ function loadVGMTrack(track) {
 
 function setMediaSession(track) {
 	
-	let trackInfo = track.innerText;			
-	let trackInfoArray = trackInfo.split("-");
-	
-	let gameTitle = trackInfoArray[0].trim();
-	let tracktitle = trackInfoArray[1].trim();
-	
 	if ('mediaSession' in navigator) {
 		navigator.mediaSession.metadata = new MediaMetadata({
-			title: tracktitle,
-			artist: gameTitle,	
+			title: track.title,
+			artist: track.game,	
 		});
 		
 		navigator.mediaSession.setActionHandler("previoustrack", playPreviousVGMTrack);  
@@ -141,7 +186,12 @@ function setGameBackgroundImage(background) {
 	document.body.style.backgroundImage = "url('"+background+"')";	
 }
 
-function playVGMTrack() {
+function trackClick(e) {
+	
+	loadVGMTrack(e.currentTarget);
+}
+
+function playPauseVGMTrack() {
 	
 	if (AUDIO_PLAYER.paused) {
 		AUDIO_PLAYER.play();

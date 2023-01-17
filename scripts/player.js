@@ -93,16 +93,16 @@ function loadPlaylist(playlist) {
 
 function buildPlaylist(playlistData) {
 
-	for (track of playlistData) {
+	for (trackObject of playlistData) {
 		
 		let trackElement = document.createElement("li");
 		let spanElement = document.createElement("span");
 		
-		trackElement.setAttribute("title", track.title);
-		trackElement.setAttribute("game", track.game);
-		trackElement.setAttribute("data-music-path", musicPath + track.src);
-		trackElement.setAttribute("data-background-path", backgroundPath+ track.background);
-		spanElement.innerText = track.game + ": " + track.title;
+		trackElement.setAttribute("data-title", trackObject.title);
+		trackElement.setAttribute("data-game", trackObject.game);
+		trackElement.setAttribute("data-music-path", musicPath + trackObject.src);
+		trackElement.setAttribute("data-background-path", backgroundPath+ trackObject.background);
+		spanElement.innerText = trackObject.game + ": " + trackObject.title;
 
 		trackElement.addEventListener("click", 
 			function (e) {
@@ -172,8 +172,8 @@ function setMediaSession(track) {
 	
 	if ('mediaSession' in navigator) {
 		navigator.mediaSession.metadata = new MediaMetadata({
-			title: track.title,
-			artist: track.game,	
+			title: track.getAttribute("data-title"),
+			artist: track.getAttribute("data-game"),	
 		});
 		
 		navigator.mediaSession.setActionHandler("previoustrack", playPreviousVGMTrack);  

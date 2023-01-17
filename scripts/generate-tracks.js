@@ -14,6 +14,7 @@ async function createTracksJSON() {
 async function readTracks() {
 	
 	let fileList = fs.readdirSync(musicFolder);
+	fileList.sort();
 
 	for (const file of fileList) {
 		await readID3Tags(file);

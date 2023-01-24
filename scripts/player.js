@@ -20,8 +20,12 @@ var MUTE_BUTTON = document.getElementById("mute");
 var VOLUME_UP_BUTTON = document.getElementById("volume-up");
 var VOLUME_DOWN_BUTTON = document.getElementById("volume-down");
 var LOOP_BUTTON = document.getElementById("loop");
+var PLAYLIST_BUTTON = document.getElementById("playlist");
 
 // global text constants
+var SITE_TITLE = document.getElementById("title");
+const ZVGM_TITLE_TEXT = "Zhadn's VGM Playlist"
+const COMMUNITY_TITLE_TEXT = "Zhadn's Community Playlist"
 const PLAY_BUTTON_TEXT = "Play"; 
 const PAUSE_BUTTON_TEXT = "Pause";
 const MUTE_BUTTON_TEXT = "Mute";
@@ -30,19 +34,23 @@ const LOOP_BUTTON_TEXT = "Loop"
 const LOOPING_BUTTON_TEXT = "Stop Looping"
 
 // global path constants
-const musicPath = "media/music/"
-const backgroundPath = "media/images/backgrounds/"
+const MUSIC_PATH = "media/music/"
+const ZVGM_MUSIC_PATH = "media/music/zhadn/"
+const COMMUNITY_MUSIC_PATH = "media/music/community/"
+const BACKGROUND_PATH = "media/images/backgrounds/"
 
 // CSS constants
 const PLAYING = "playing";
 const LOOPING = "looping"; 
 
-// Platlists
-const ZVGM = "scripts/tracks.json";
+// Playlists
+const ZVGM_PLAYLIST_PATH = ZVGM_MUSIC_PATH + "tracks.json";
+const COMMUNITY_PLAYLIST_PATH = COMMUNITY_MUSIC_PATH + "tracks.json";
+var SWITCH_ZVGM = false;
 
 // set volume defaults, and load the first game track
 setAudioDefaults();
-loadPlaylist(ZVGM);
+loadPlaylist();
 
 // choose a random track after a track has finished playing
 AUDIO_PLAYER.onended = function() {
@@ -80,18 +88,37 @@ function setAudioDefaults() {
 	AUDIO_PLAYER.volume = 0.2;	
 }
 
-function loadPlaylist(playlist) {
+function loadPlaylist() {
 	
-	fetch(playlist, {
-		method: 'GET',
-	})
-	.then(response => response.json())
-	.then((data) => {
-		buildPlaylist(data);
-	});
+	if (!SWITCH_ZVGM) {
+		fetch(ZVGM_PLAYLIST_PATH, {
+			method: 'GET',
+		})
+		.then(response => response.json())
+		.then((data) => {
+			buildPlaylist(data, ZVGM_MUSIC_PATH);
+			SWITCH_ZVGM = true;
+		});
+	} else {
+		fetch(COMMUNITY_PLAYLIST_PATH, {
+			method: 'GET',
+		})
+		.then(response => response.json())
+		.then((data) => {
+			buildPlaylist(data, COMMUNITY_MUSIC_PATH);
+			SWITCH_ZVGM = false;
+		});	
+	}
 }
 
-function buildPlaylist(playlistData) {
+function buildPlaylist(playlistData, musicPath) {
+	
+	let firstElement = VGM_TRACKS.firstElementChild;
+	
+	while (firstElement) {	
+            firstElement.remove();
+            firstElement = VGM_TRACKS.firstElementChild;
+    }
 
 	for (trackObject of playlistData) {
 		
@@ -101,7 +128,7 @@ function buildPlaylist(playlistData) {
 		trackElement.setAttribute("data-title", trackObject.title);
 		trackElement.setAttribute("data-game", trackObject.game);
 		trackElement.setAttribute("data-music-path", musicPath + trackObject.src);
-		trackElement.setAttribute("data-background-path", backgroundPath+ trackObject.background);
+		trackElement.setAttribute("data-background-path", BACKGROUND_PATH + trackObject.background);
 		spanElement.innerText = trackObject.game + ": " + trackObject.title;
 
 		trackElement.addEventListener("click", 
@@ -261,6 +288,19 @@ function loopVGMTrack() {
 		AUDIO_PLAYER.loop = !AUDIO_PLAYER.loop;
 		CURRENT_TRACK.classList.remove(LOOPING);
 		LOOP_BUTTON.innerText = LOOP_BUTTON_TEXT;
+	}
+}
+
+function changePlaylist() {
+	
+	loadPlaylist();
+	
+	if (SWITCH_ZVGM) {
+		SITE_TITLE.firstChild.innerText = COMMUNITY_TITLE_TEXT;
+		PLAYLIST_BUTTON.innerText = ZVGM_TITLE_TEXT;
+	} else  {
+		SITE_TITLE.firstChild.innerText = ZVGM_TITLE_TEXT;
+		PLAYLIST_BUTTON.innerText = COMMUNITY_TITLE_TEXT;
 	}
 }
 

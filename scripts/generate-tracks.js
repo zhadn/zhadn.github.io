@@ -1,29 +1,38 @@
 const jsmediatags = require("jsmediatags");
 const fs = require("fs");
-const musicFolder = "../media/music/";
+const musicFolder = "../media/music";
+const jsonFile = "tracks.json";
+
 var trackArray = [];
 
 createTracksJSON();
-
+	
 async function createTracksJSON() {
 	
-	await readTracks();
-	writeTracks();
+	let zhadnMusicFolder = musicFolder + "/zhadn/";
+	await readTracks(zhadnMusicFolder);
+	writeTracks(zhadnMusicFolder);
+	
+	let communityMusicFolder = musicFolder + "/community/";
+	await readTracks(communityMusicFolder);
+	writeTracks(communityMusicFolder);
 }
 
-async function readTracks() {
+async function readTracks(playlistFolder) {
 	
-	let fileList = fs.readdirSync(musicFolder);
+	let fileList = fs.readdirSync(playlistFolder);
 	fileList.sort();
 
 	for (const file of fileList) {
-		await readID3Tags(file);
+		if (file !== jsonFile) {
+			await readID3Tags(playlistFolder, file);
+		}
 	}
 }
 
-async function readID3Tags(file) {
+async function readID3Tags(playlistFolder, file) {
 
-	let filePath = musicFolder + file;
+	let filePath = playlistFolder + file;
 	let trackObject = {};
 
 	try {
@@ -57,11 +66,13 @@ function readMetadataAsync(filePath) {
 	});
 }
 
-function writeTracks() {
+function writeTracks(playlistFolder) {
 
 	let trackObjects = JSON.stringify(trackArray, null, 2);
 
-	fs.writeFile('tracks.json', trackObjects, (error) => {
+	fs.writeFile(playlistFolder + jsonFile, trackObjects, (error) => {
 		if (error) throw error;
 	});
+	
+	trackArray = [];
 }

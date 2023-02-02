@@ -1,5 +1,8 @@
 body {
 	font-family: "Verdana", sans-serif;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 li {

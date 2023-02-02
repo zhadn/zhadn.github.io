@@ -32,7 +32,7 @@ async function readTracks(playlistFolder) {
 
 async function readID3Tags(playlistFolder, file) {
 
-	let filePath = playlistFolder + file;
+	let filePath = Folder + file;
 	let trackObject = {};
 
 	try {

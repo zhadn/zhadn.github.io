@@ -210,7 +210,7 @@ function setMediaSession(track) {
 
 function setGameBackgroundImage(background) {
 	
-	document.body.style.backgroundImage = "url('"+background+"')";	
+	document.body.style.backgroundImage = `url(${background})`;	
 }
 
 function trackClick(e) {

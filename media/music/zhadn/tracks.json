@@ -16,12 +16,28 @@
     "background": "deltarune.jpeg"
   },
   {
+    "title": "Stickerbrush Symphony",
+    "game": "Donkey Kong Country 2: Diddy's Kong Quest",
+    "composer": "David Wise",
+    "year": "1995",
+    "src": "donkey-kong-country-2_stickerbrush-symphony.mp3",
+    "background": "donkey-kong-country-2-diddy's-kong-quest.jpeg"
+  },
+  {
     "title": "Aquatic Ambience",
     "game": "Donkey Kong Country",
     "composer": "David Wise",
     "year": "1994",
     "src": "donkey-kong-country_aquatic-ambience.mp3",
     "background": "donkey-kong-country.jpeg"
+  },
+  {
+    "title": "City of Fire - Faeria",
+    "game": "Final Fantasy Mystic Quest",
+    "composer": "Ryuji Sasai, Yasuhiro Kawakami",
+    "year": "1992",
+    "src": "final-fantasy-mystic-quest_city-of-fire-faeria.mp3",
+    "background": "final-fantasy-mystic-quest.jpeg"
   },
   {
     "title": "Sprouting",
@@ -86,6 +102,14 @@
     "year": "2001",
     "src": "phoenix-wright-ace-attorney_dick-gumshoe-detective-gumshoe-pal.mp3",
     "background": "phoenix-wright-ace-attorney.jpeg"
+  },
+  {
+    "title": "Dark World",
+    "game": "The Legend of Zelda: A Link to the Past",
+    "composer": "Koji Kondo",
+    "year": "1991",
+    "src": "the-legend-of-zelda-a-link-to-the-past_dark-world.mp3",
+    "background": "the-legend-of-zelda-a-link-to-the-past.jpeg"
   },
   {
     "title": "N木ig木ht木L",

@@ -32,7 +32,7 @@ async function readTracks(playlistFolder) {
 
 async function readID3Tags(playlistFolder, file) {
 
-	let filePath = Folder + file;
+	let filePath = playlistFolder + file;
 	let trackObject = {};
 
 	try {
@@ -40,7 +40,7 @@ async function readID3Tags(playlistFolder, file) {
 		var tags = output.tags;
 		let backgroundPath = tags.album.toLowerCase();
 		backgroundPath = backgroundPath.replaceAll(" ", "-").replaceAll(":","") + ".jpeg";
-		
+
 		trackObject = {
 				title: tags.title,
 				game: tags.album,

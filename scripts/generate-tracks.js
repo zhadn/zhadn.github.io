@@ -39,7 +39,7 @@ async function readID3Tags(playlistFolder, file) {
 		let output = await readMetadataAsync(filePath);
 		var tags = output.tags;
 		let backgroundPath = tags.album.toLowerCase();
-		backgroundPath = backgroundPath.replaceAll(" ", "-").replaceAll(":","") + ".jpeg";
+		backgroundPath = backgroundPath.replaceAll(" ", "-").replaceAll(":","").replaceAll("'","") + ".jpeg";
 
 		trackObject = {
 				title: tags.title,

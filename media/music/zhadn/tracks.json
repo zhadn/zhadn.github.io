@@ -64,6 +64,14 @@
     "background": "fire-emblem-three-houses.jpeg"
   },
   {
+    "title": "Venus Lighthouse",
+    "game": "Golden Sun",
+    "composer": "Motoi Sakuraba",
+    "year": "2001",
+    "src": "golden-sun_venus_lighthouse.mp3",
+    "background": "golden-sun.jpeg"
+  },
+  {
     "title": "LONELY ROLLING STAR",
     "game": "Katamari Damacy",
     "composer": "Yū Miyake",

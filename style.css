@@ -12,7 +12,9 @@ li {
 }
 
 li span {
-	padding-left: 2em;
+    padding-left: 1em;
+	padding-right: 1em;
+	display: inline-block;
 }
 
 ul {
@@ -57,7 +59,9 @@ ul {
 
 #tracks {
 	background-color: #FFFFFF;
-	opacity: 0.75;
+	opacity: 0.70;
+	width: 70%;
+	margin: auto;
 }
 
 #tracks .playing {

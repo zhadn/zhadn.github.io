@@ -40,12 +40,36 @@
     "background": "final-fantasy-mystic-quest.jpeg"
   },
   {
+    "title": "On Our Way",
+    "game": "Final Fantasy VII",
+    "composer": "Nobuo Uematsu",
+    "year": "1997",
+    "src": "final-fantasy-vii_ahead-on-our-way.mp3",
+    "background": "final-fantasy-vii.jpeg"
+  },
+  {
+    "title": "Under Her Control",
+    "game": "Final Fantasy VIII",
+    "composer": "Nobuo Uematsu",
+    "year": "1999",
+    "src": "final-fantasy-viii_under-her-control.mp3",
+    "background": "final-fantasy-viii.jpeg"
+  },
+  {
     "title": "Sprouting",
     "game": "Final Fantasy X",
     "composer": "Nobuo Uematsu, Junya Nakano",
     "year": "2001",
     "src": "final-fantasy-x_sprouting.mp3",
     "background": "final-fantasy-x.jpeg"
+  },
+  {
+    "title": "Gustaberg",
+    "game": "Final Fantasy XI",
+    "composer": "Kumi Tanioka",
+    "year": "2002",
+    "src": "final-fantasy-xi_gustaberg.mp3",
+    "background": "final-fantasy-xi.jpeg"
   },
   {
     "title": "The Sunleth Waterscape",
@@ -118,6 +142,22 @@
     "year": "1991",
     "src": "the-legend-of-zelda-a-link-to-the-past_dark-world.mp3",
     "background": "the-legend-of-zelda-a-link-to-the-past.jpeg"
+  },
+  {
+    "title": "Gerudo Valley",
+    "game": "The Legend of Zelda: Ocarina of Time",
+    "composer": "Koji Kondo",
+    "year": "1998",
+    "src": "the-legend-of-zelda-ocarina-of-time_gerudo-valley.mp3",
+    "background": "the-legend-of-zelda-ocarina-of-time.jpeg"
+  },
+  {
+    "title": "The Great Sea",
+    "game": "The Legend of Zelda: The Wind Waker",
+    "composer": "\nKenta Nagata\n, Hajime Wakai, \nToru Minegishi, \nKoji Kondo",
+    "year": "2002",
+    "src": "the-legend-of-zelda-the-wind-waker_the-great-sea.mp3",
+    "background": "the-legend-of-zelda-the-wind-waker.jpeg"
   },
   {
     "title": "N木ig木ht木L",

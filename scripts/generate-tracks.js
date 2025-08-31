@@ -13,9 +13,12 @@ async function createTracksJSON() {
 	await readTracks(zhadnMusicFolder);
 	writeTracks(zhadnMusicFolder);
 	
-	let communityMusicFolder = musicFolder + "/community/";
-	await readTracks(communityMusicFolder);
-	writeTracks(communityMusicFolder);
+	// Community tracks generation is removed until more are available
+	/*
+		let communityMusicFolder = musicFolder + "/community/";
+		await readTracks(communityMusicFolder);
+		writeTracks(communityMusicFolder);
+	*/
 }
 
 async function readTracks(playlistFolder) {

@@ -9,7 +9,7 @@ To build the site and make it available on a local server, run `jekyll serve`.
 # Media
 Images and backgrounds follow different naming conventions.
 
-## Images:
+## Images
 All images are `1920x1080` and saved as `.jpeg`.
 
 Images are named per this example:

@@ -63,22 +63,35 @@ AUDIO_PLAYER.onpause = function() { PLAY_BUTTON.innerText = PLAY_BUTTON_TEXT; };
 
 // control display of volume control buttons
 AUDIO_PLAYER.onvolumechange = function() {
+
+	// allow volume controls when muted to set state to unmuted
+	if (AUDIO_PLAYER.muted == 1) {
+		AUDIO_PLAYER.muted = true;
+		MUTE_BUTTON.innerText = UNMUTE_BUTTON_TEXT;
+	} else {
+		MUTE_BUTTON.innerText = MUTE_BUTTON_TEXT;
+	}	
 	
 	// disable volume control increment at max volume 
 	if (AUDIO_PLAYER.volume == 1) {
 		VOLUME_UP_BUTTON.disabled = true;
-		} else {
+
+		// custom mute controls at max volume
+		if (AUDIO_PLAYER.muted == 1) {
+			MUTE_BUTTON.innerText = UNMUTE_BUTTON_TEXT;
+		}
+	} else {
 		VOLUME_UP_BUTTON.disabled = false;
 	}
-	
+
 	// disable volume controls at min volume 
-	if (AUDIO_PLAYER.volume == 0 || AUDIO_PLAYER.muted) {
+	if (AUDIO_PLAYER.volume == 0) {
+		VOLUME_DOWN_BUTTON.disabled = true;
+
+		// custom mute controls at min volume
 		AUDIO_PLAYER.muted = true;
 		MUTE_BUTTON.innerText = UNMUTE_BUTTON_TEXT;
-		VOLUME_UP_BUTTON.disabled = true;
-		VOLUME_DOWN_BUTTON.disabled = true;
-		} else {
-		MUTE_BUTTON.innerText = MUTE_BUTTON_TEXT;
+	} else {
 		VOLUME_DOWN_BUTTON.disabled = false;
 	}
 };
@@ -116,8 +129,8 @@ function buildPlaylist(playlistData, musicPath) {
 	let firstElement = VGM_TRACKS.firstElementChild;
 	
 	while (firstElement) {	
-            firstElement.remove();
-            firstElement = VGM_TRACKS.firstElementChild;
+        firstElement.remove();
+        firstElement = VGM_TRACKS.firstElementChild;
     }
 
 	for (trackObject of playlistData) {
@@ -210,7 +223,17 @@ function setMediaSession(track) {
 
 function setGameBackgroundImage(background) {
 	
-	document.body.style.backgroundImage = `url(${background})`;	
+	document.body.style.backgroundImage = `url(${background})`;
+
+	// check the user agent string so that mobile devices have a more responsive background image
+	const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+
+	if (regex.test(navigator.userAgent)) {
+		// increase size of background images on mobile devices
+		document.body.style.backgroundSize = `400% 400%`;
+	} else {
+		document.body.style.backgroundSize = `cover`;
+	}
 }
 
 function trackClick(e) {
@@ -256,13 +279,16 @@ function muteVGMPlayer() {
 		
 		// set a minimum volume when unmuting the audio player from a muted state
 		if (AUDIO_PLAYER.volume == 0) {
-			AUDIO_PLAYER.volume = 0.1;
+			AUDIO_PLAYER.volume = 0.2;
 		}
 	}
 }
 
 function changeVolume(dt) {
 	
+	// unmute audio when volume controls change
+	if (AUDIO_PLAYER.muted == 1) { AUDIO_PLAYER.muted = 0};
+
 	let volumeChange = AUDIO_PLAYER.volume + dt;
 	let newVolume = volumeChange.toFixed(2);
 	
@@ -270,11 +296,11 @@ function changeVolume(dt) {
 	if (newVolume >= 0 && newVolume <= 1){
 		AUDIO_PLAYER.volume = newVolume;
 	} 
-	
-	// set volume to 0 for negative decrements on ~0.01 to ~0.09 
+
+	// set volume to 0 for negative decrements on ~0.01 to ~0.04 
 	if (newVolume <= 0) { AUDIO_PLAYER.volume = 0; }
 	
-	// set volume to 1 for positive increments on ~0.91 to ~0.99  
+	// set volume to 1 for positive increments on ~0.96 to ~0.99  
 	if (newVolume >= 1) { AUDIO_PLAYER.volume = 1; }
 }
 

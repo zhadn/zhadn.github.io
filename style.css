@@ -6,15 +6,16 @@ body {
 }
 
 li {
+	display: flex;
 	border: 1px solid black;
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 }
 
 li span {
+	font-size: small;
     padding-left: 1em;
 	padding-right: 1em;
-	display: inline-block;
 }
 
 ul {

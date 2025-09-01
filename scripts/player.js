@@ -1,6 +1,7 @@
 // globals for audio player
 var AUDIO_PLAYER = document.getElementById("audio-player");
 var AUDIO_PLAYER_TRACK = document.getElementById("audio-player-track");
+var MOBILE = false;
 
 // globals for track collection information
 var VGM_TRACKS = document.getElementById("vgm-tracks");
@@ -98,6 +99,11 @@ AUDIO_PLAYER.onvolumechange = function() {
 
 function setAudioDefaults() {
 	
+	// check the user agent string to set a different experience for mobile devices
+	const user_agent = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+	if (user_agent.test(navigator.userAgent)) { MOBILE = true };
+
+	// set a default volume for the audio player
 	AUDIO_PLAYER.volume = 0.2;	
 }
 
@@ -125,7 +131,7 @@ function loadPlaylist() {
 }
 
 function buildPlaylist(playlistData, musicPath) {
-	
+
 	let firstElement = VGM_TRACKS.firstElementChild;
 	
 	while (firstElement) {	
@@ -137,19 +143,35 @@ function buildPlaylist(playlistData, musicPath) {
 		
 		let trackElement = document.createElement("li");
 		let spanElement = document.createElement("span");
-		
+
 		trackElement.setAttribute("data-title", trackObject.title);
 		trackElement.setAttribute("data-game", trackObject.game);
+		trackElement.setAttribute("data-composer", trackObject.composer);
+		trackElement.setAttribute("data-year", trackObject.year);		
 		trackElement.setAttribute("data-music-path", musicPath + trackObject.src);
 		trackElement.setAttribute("data-background-path", BACKGROUND_PATH + trackObject.background);
+		
 		spanElement.innerText = trackObject.game + ": " + trackObject.title;
 
 		trackElement.addEventListener("click", 
 			function (e) {
 				trackClick(e);
 			});
+		
+		if (MOBILE) {
+			trackElement.appendChild(spanElement);
+		} else {
+			// Add additional track information, like composer and year, for desktop devices
+			let spanInformationElement = document.createElement("span");
+			spanInformationElement.innerText = trackObject.composer + ", " + trackObject.year;
+			spanInformationElement.style.fontStyle = "italic";
 
-		trackElement.appendChild(spanElement);
+			// Justify the left content (game, title) from the right content (composer[s], year)
+			trackElement.style.justifyContent = "space-between";
+
+			trackElement.appendChild(spanElement);
+			trackElement.appendChild(spanInformationElement);
+		}
 		VGM_TRACKS.appendChild(trackElement);
 	}
 	
@@ -213,7 +235,7 @@ function setMediaSession(track) {
 	if ('mediaSession' in navigator) {
 		navigator.mediaSession.metadata = new MediaMetadata({
 			title: track.getAttribute("data-title"),
-			artist: track.getAttribute("data-game"),	
+			artist: track.getAttribute("data-game"),
 		});
 		
 		navigator.mediaSession.setActionHandler("previoustrack", playPreviousVGMTrack);  
@@ -225,10 +247,7 @@ function setGameBackgroundImage(background) {
 	
 	document.body.style.backgroundImage = `url(${background})`;
 
-	// check the user agent string so that mobile devices have a more responsive background image
-	const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-
-	if (regex.test(navigator.userAgent)) {
+	if (MOBILE) {
 		// increase size of background images on mobile devices
 		document.body.style.backgroundSize = `400% 400%`;
 	} else {
